@@ -1,0 +1,157 @@
+/* Общий стиль страницы */
+body {
+    font-family: "Tuffy", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #1f1f1f;
+    color: #ecf0f1;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+}
+
+/* Секция статистики */
+.section-stat {
+    padding: 20px;
+    background-color: #34495e;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+/* Контейнер для статистики */
+.container-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Статистические надписи */
+.stat-hard, .stat-easy {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #f39c12;
+}
+
+/* Цена поинта */
+#pricePointInput {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    border: 1px solid #34495e;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100px;
+    text-align: center;
+}
+
+#pricePoint {
+    color: #ecf0f1;
+}
+
+/* Секция меню */
+.section-menu {
+    background-color: #34495e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+.container-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Карточки сборок */
+.cards div {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #c0392b;
+}
+
+/* Секция с графиком */
+.section-chart {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    padding-bottom: 100px;
+}
+
+.container-chart {
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 8px;
+}
+
+.countCard {
+    width: 50px;
+
+    background-color: #4d5d6d;
+    color: #ecf0f1;
+    border: 1px solid #34495e;
+    border-radius: 5px;
+    padding: 8px;
+    width: 80px;
+    text-align: center;
+}
+
+/* Секция с зарплатой */
+.container-salary {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#allPayDay {
+    font-size: 20px;
+    color: #ecf0f1;
+}
+
+/* Стили для заголовков */
+h1 {
+    text-align: center;
+    color: #ecf0f1;
+}
+
+
+#allCountPoint {
+    font-size: 22px;
+}

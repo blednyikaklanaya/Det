@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <section class="section-stat">
+        <div class="container container-stat">
+            
+            <div class="container">
+                <span id="statHard" class="stat-hard">Сложные: пока что похуй </span>
+                <span id="statEasy" class="stat-easy">Легкие: пока что похуй </span>
+            </div>
+            <span id="allCountPoint">Общее количество поинтов: </span>
+
+            <div class="container-point-stat">
+                <span id="pricePoint">Цена поинта: </span>
+                <input id="pricePointInput" type="number">
+            </div>
+
+            <div class="container-salary">
+                <span id="allPayDay">Общий зароботок: </span>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section-menu">
+        <div class="container container-menu">
+            <span>Сборки за месяць</span>
+
+            <div class="cards">
+            </div>
+        </div>
+
+    </section>
+
+    <section class="section-chart">
+        <div class="container container-chart">
+            <canvas id="myChart" width="400" height="200"></canvas>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="mainWorker.js"></script>
+
+</body>
+
+</html>
