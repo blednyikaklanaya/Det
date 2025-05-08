@@ -7,7 +7,8 @@ const builds = [
     { name: "Prologic-E109-2ssd", points: 4, count: 0 },
     { name: "Prologic-E125-400w", points: 2, count: 0 },
     { name: "X5", points: 5, count: 0 },
-    { name: "D5", points: 5, count: 0 }
+    { name: "D5", points: 5, count: 0 },
+    { name: "E106-Slim-1SDD", points: 2, count: 0 }
 ];
 
 const savedBuilds = localStorage.getItem('builds');
@@ -50,7 +51,7 @@ function resum () {
     let counterPoint = 0;
     builds.forEach(build => {
         counterPoint += build.points * build.count;
-        allCountPointLabel.textContent = `Общее количество поинтов: ${counterPoint}`;
+        allCountPointLabel.textContent = `All points: ${counterPoint}`;
     })
     allCountPoint = counterPoint;
     counterPoint = 0;
@@ -59,7 +60,7 @@ function resum () {
 function resPayDay () {
     let payDayCounter = 0;
     payDayCounter = allCountPoint * pricePoint;
-    allSalaryLabel.textContent = `Общий зароботок: ${payDayCounter}`;
+    allSalaryLabel.textContent = `All salary: ${payDayCounter}`;
     allSalary = payDayCounter;
     payDayCounter = 0;
 }
