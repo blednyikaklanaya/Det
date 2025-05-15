@@ -2,14 +2,18 @@
 const builds = [
     { name: "NoteBook", points: 3, count: 0 },
     { name: "NoteBookWindows", points: 4, count: 0 },
-    { name: "DeepCool-ch360-NotBP", points: 7, count: 0 },
+    { name: "DeepCool-CH360", points: 7, count: 0 },
+    { name: "DeepCool-CC360", points: 7, count: 0 },
     { name: "Forge-120A-MAG-650W", points: 6, count: 0 },
     { name: "Prologic-E109-2ssd", points: 4, count: 0 },
     { name: "Prologic-E125-400w", points: 2, count: 0 },
-    { name: "X5", points: 5, count: 0 },
-    { name: "D5", points: 5, count: 0 },
+    { name: "Prologic-E104", points: 2, count: 0 },
     { name: "E106-Slim-1SDD", points: 2, count: 0 },
-    { name: "Mono-disassembly", points: 4, count: 0 }
+    { name: "X5", points: 5, count: 0 },
+    { name: "X6", points: 5, count: 0 },
+    { name: "D5", points: 5, count: 0 },
+    { name: "Mono-disassembly", points: 4, count: 0 },
+    { name: "Disassembly", points: 10, count: 0 }
 ];
 
 const savedBuilds = localStorage.getItem('builds');
@@ -42,7 +46,6 @@ pricePointInput.addEventListener("change", e => {
     console.log("->p", pricePoint);//debug
 })
 
-console.log(pricePoint);
 // ------
 
 
