@@ -1,19 +1,32 @@
 
 const builds = [
-    { name: "NoteBook", points: 3, count: 0 },
-    { name: "NoteBookWindows", points: 4, count: 0 },
-    { name: "DeepCool-CH360", points: 7, count: 0 },
-    { name: "DeepCool-CC360", points: 7, count: 0 },
-    { name: "Forge-120A-MAG-650W", points: 6, count: 0 },
-    { name: "Prologic-E109-2ssd", points: 4, count: 0 },
-    { name: "Prologic-E125-400w", points: 2, count: 0 },
-    { name: "Prologic-E104", points: 2, count: 0 },
-    { name: "E106-Slim-1SDD", points: 2, count: 0 },
-    { name: "X5", points: 5, count: 0 },
-    { name: "X6", points: 5, count: 0 },
-    { name: "D5", points: 5, count: 0 },
-    { name: "Mono-disassembly", points: 4, count: 0 },
-    { name: "Disassembly", points: 10, count: 0 }
+    { name: "Solo", points: 1, count: 0 },
+    { name: "Easy", points: 3, count: 0 },
+    { name: "Base", points: 5, count: 0 },
+    { name: "Hard", points: 7, count: 0 },
+    { name: "MaxHard", points: 10, count: 0 },
+    { name: "Fans", points: 1, count: 0 },
+    { name: "DubleTower", points: 4, count: 0 },
+    { name: "Liquid1", points: 2, count: 0 },
+    { name: "Liquid2", points: 3, count: 0 },
+    { name: "Liquid3", points: 4, count: 0 },
+    { name: "Controller", points: 1, count: 0 },
+    { name: "Adapter", points: 1, count: 0 },
+    { name: "Switcher5V", points: 1, count: 0 },
+    { name: "HDD", points: 1, count: 0 },
+    { name: "2SSD", points: 1, count: 0 },
+    { name: "Raizer", points: 1, count: 0 },
+    { name: "RaizerHolder", points: 2, count: 0 },
+    { name: "ManipulationsWithPC", points: 1, count: 0 },
+    { name: "Screen", points: 1, count: 0 },
+    { name: "Photo", points: 3, count: 0 },
+    { name: "review", points: 10, count: 0 },
+    { name: "SocketIntel", points: 1, count: 0 },
+    { name: "RGB", points: 7, count: 0 },
+    { name: "Box", points: 1, count: 0 },
+    { name: "WIFI", points: 1, count: 0 },
+    { name: "NoteBook", points: 2, count: 0 },
+    { name: "NoteBookWindows", points: 3, count: 0 },
 ];
 
 const savedBuilds = localStorage.getItem('builds');
@@ -31,7 +44,7 @@ let allCountPointLabel = document.getElementById("allCountPoint");
 let allCountPoint = 0;
 
 let pricePointInput = document.getElementById("pricePointInput");
-let pricePoint = 13;
+let pricePoint = 15;
 pricePointInput.value = pricePoint;
 
 let allSalaryLabel = document.getElementById("allPayDay");
@@ -90,6 +103,7 @@ builds.forEach((build, index) => {
     card.innerHTML = `
         <span>${build.name}</span>
         <input id="${build.name}" class="count${build.name} countCard" value="${build.count}">
+        <span class="point">point > ${build.points}<span/>
         <button class="incCount${build.name}">+</button>
         <button class="decCount${build.name}">-</button>
     `;
