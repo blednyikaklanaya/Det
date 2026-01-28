@@ -30,7 +30,7 @@ body {
 }
 
 /* Статистические надписи */
-.stat-hard, .stat-easy {
+.stat-hard, .stat-easy, .textCard {
     font-size: 18px;
     margin-bottom: 10px;
     color: #f39c12;

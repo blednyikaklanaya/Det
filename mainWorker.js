@@ -96,7 +96,6 @@ resPayDay();
 let divCards = document.getElementsByClassName("cards")[0];
 console.log(divCards);
 
-
 builds.forEach((build, index) => {
     const card = document.createElement("div");
     card.classList.add(build.name);
@@ -139,6 +138,15 @@ builds.forEach((build, index) => {
     })
 
     divCards.appendChild(card);
+
+    const textCard = document.createElement("div");
+    textCard.innerHTML = `
+        <span class="textCard" >Дополнительные действие с сборкой<span/>
+    `
+
+    if (build.name === "MaxHard") {
+        divCards.appendChild(textCard);
+    }
 })
 // -----------
 
@@ -233,3 +241,21 @@ if ('serviceWorker' in navigator) {
     });
   }
   
+
+let buttonClear = document.getElementById("CLEARBUTON");
+
+function clearProgressAndUpdate () {
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    if ( 'caches' in window ) {
+        caches.keys().then(keys => {
+            keys.forEach(key = caches.delete(key));
+        });
+    }
+    window.location.reload(true)
+}
+
+buttonClear.addEventListener("click", ( ) => {
+    clearProgressAndUpdate();
+})
