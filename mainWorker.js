@@ -1,32 +1,32 @@
 
 const builds = [
-    { name: "Solo", points: 1, count: 0 },
-    { name: "Easy", points: 3, count: 0 },
-    { name: "Base", points: 5, count: 0 },
-    { name: "Hard", points: 7, count: 0 },
-    { name: "MaxHard", points: 10, count: 0 },
-    { name: "Fans", points: 1, count: 0 },
-    { name: "DubleTower", points: 4, count: 0 },
-    { name: "Liquid1", points: 2, count: 0 },
-    { name: "Liquid2", points: 3, count: 0 },
-    { name: "Liquid3", points: 4, count: 0 },
-    { name: "Controller", points: 1, count: 0 },
-    { name: "Adapter", points: 1, count: 0 },
-    { name: "Switcher5V", points: 1, count: 0 },
-    { name: "HDD", points: 1, count: 0 },
-    { name: "2SSD", points: 1, count: 0 },
-    { name: "Raizer", points: 1, count: 0 },
-    { name: "RaizerHolder", points: 2, count: 0 },
-    { name: "ManipulationsWithPC", points: 1, count: 0 },
-    { name: "Screen", points: 1, count: 0 },
-    { name: "Photo", points: 3, count: 0 },
-    { name: "review", points: 10, count: 0 },
-    { name: "SocketIntel", points: 1, count: 0 },
-    { name: "RGB", points: 7, count: 0 },
-    { name: "Box", points: 1, count: 0 },
-    { name: "WIFI", points: 1, count: 0 },
-    { name: "NoteBook", points: 2, count: 0 },
-    { name: "NoteBookWindows", points: 3, count: 0 },
+    { name: "Solo", points: 1, count: 0, title: "Одиночка" },
+    { name: "Easy", points: 3, count: 0, title: "Легкий" },
+    { name: "Base", points: 5, count: 0, title: "Базовий" },
+    { name: "Hard", points: 7, count: 0, title: "Сложный" },
+    { name: "MaxHard", points: 10, count: 0, title: "Максимальный" },
+    { name: "Fans", points: 1, count: 0, title: "Кулеры" },
+    { name: "DubleTower", points: 4, count: 0, title: "Двойная башня" },
+    { name: "Liquid1", points: 2, count: 0, title: "Водянка 1 секция" },
+    { name: "Liquid2", points: 3, count: 0, title: "2 секции" },
+    { name: "Liquid3", points: 4, count: 0, title: "3 секции" },
+    { name: "Controller", points: 1, count: 0, title: "Контроллер" },
+    { name: "Adapter", points: 1, count: 0, title: "Переходник" },
+    { name: "Switcher5V", points: 1, count: 0, title: "Разветлитель 5В" },
+    { name: "HDD", points: 1, count: 0, title: "HDD" },
+    { name: "2SSD", points: 1, count: 0, title: "2SSD" },
+    { name: "Raizer", points: 1, count: 0, title: "Райзер" },
+    { name: "RaizerHolder", points: 2, count: 0, title: "Райзер с держателем" },
+    { name: "ManipulationsWithPC", points: 1, count: 0, title: "Манипуляция с корпусом" },
+    { name: "Screen", points: 1, count: 0, title: "Экран" },
+    { name: "Photo", points: 3, count: 0, title: "Фото"},
+    { name: "review", points: 10, count: 0, title: "Обзор" },
+    { name: "SocketIntel", points: 1, count: 0, title: "Сокет интел" },
+    { name: "RGB", points: 7, count: 0, title: "РГБ лента" },
+    { name: "Box", points: 1, count: 0, title: "Коробки"},
+    { name: "WIFI", points: 1, count: 0, title: "WI-Fi"},
+    { name: "NoteBook", points: 2, count: 0, title: "Ноутбук" },
+    { name: "NoteBookWindows", points: 3, count: 0, title: "Ноутбук с виндой" },
 ];
 
 const savedBuilds = localStorage.getItem('builds');
@@ -68,7 +68,7 @@ function resum () {
     let counterPoint = 0;
     builds.forEach(build => {
         counterPoint += build.points * build.count;
-        allCountPointLabel.textContent = `All points: ${counterPoint}`;
+        allCountPointLabel.textContent = `Всего поинтов: ${counterPoint}`;
     })
     allCountPoint = counterPoint;
     counterPoint = 0;
@@ -77,7 +77,7 @@ function resum () {
 function resPayDay () {
     let payDayCounter = 0;
     payDayCounter = allCountPoint * pricePoint;
-    allSalaryLabel.textContent = `All salary: ${payDayCounter}`;
+    allSalaryLabel.textContent = `Ожидаемая мотивация: ${payDayCounter}`;
     allSalary = payDayCounter;
     payDayCounter = 0;
 }
@@ -101,7 +101,7 @@ builds.forEach((build, index) => {
     const card = document.createElement("div");
     card.classList.add(build.name);
     card.innerHTML = `
-        <span>${build.name}</span>
+        <span>${build.title}</span>
         <input id="${build.name}" class="count${build.name} countCard" value="${build.count}">
         <span class="point">point > ${build.points}<span/>
         <button class="incCount${build.name}">+</button>
