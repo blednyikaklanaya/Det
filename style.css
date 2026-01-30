@@ -177,3 +177,22 @@ h1 {
     width: 100px;
     height: 100px;
 }
+
+/* month section */
+
+.month-select {
+    display: flex;
+    gap: 15px;
+}
+
+.div-month {
+    background-color: #181c1f;
+    width: 50px;
+    color: #ecf0f1;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}

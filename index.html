@@ -1,75 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Worker</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>Worker</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
 
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#1f1f1f">
-    
-    <!-- Для iPhone -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="/icon-192.png">
-</head>
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#1f1f1f">
+        
+        <!-- Для iPhone -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <link rel="apple-touch-icon" href="/icon-192.png">
+    </head>
 
-<body>
-    <section class="section-stat">
-        <div class="container container-stat">
-            
-            <div class="container">
-                <span id="statHard" class="stat-hard">Сложные: пока что похуй </span>
-                <span id="statEasy" class="stat-easy">Легкие: пока что похуй </span>
+    <body>
+        <section class="section-stat">
+            <div class="container container-stat">
+                
+                <div class="container">
+                    <span id="statHard" class="stat-hard">Сложные: пока что похуй </span>
+                    <span id="statEasy" class="stat-easy">Легкие: пока что похуй </span>
+                </div>
+                <span id="allCountPoint">Общее количество поинтов: </span>
+
+                <div class="container-point-stat">
+                    <span id="pricePoint">Цена поинта: </span>
+                    <input id="pricePointInput" type="number">
+                </div>
+
+                <div class="container-salary">
+                    <span id="allPayDay">Общий заработок: </span>
+                    <img class="reaction" src="kaneki-my-reaction-to-that-information.gif">
+                </div>
+
             </div>
-            <span id="allCountPoint">Общее количество поинтов: </span>
+        </section>
 
-            <div class="container-point-stat">
-                <span id="pricePoint">Цена поинта: </span>
-                <input id="pricePointInput" type="number">
+        <section class="section-menu">
+            <div class="container container-menu">
+                <span>Сборки и допы к ним за месяць</span>
+
+                <div class="cards">
+                </div>
             </div>
 
-            <div class="container-salary">
-                <span id="allPayDay">Общий заработок: </span>
-                <img class="reaction" src="kaneki-my-reaction-to-that-information.gif">
+        </section>
+
+        <section class="section-chart">
+            <div class="container container-chart">
+                <canvas id="myChart" width="400" height="200"></canvas>
+            </div>
+        </section>
+
+        <section class="section-menu">
+            <div class="container container-menu">
+                <span> Просмотр по месяцам </span>
+
+                <div class="month-select">
+                    <button id="monthPreviousButton"> < </button>
+                    <div class="div-month">
+                        <span id="monthNumber">1</span>
+                    </div>
+                    <button id="monthNextButton"> > </button>
+                </div>
+
             </div>
 
-        </div>
-    </section>
+        </section>
 
-    <section class="section-menu">
-        <div class="container container-menu">
-            <span>Сборки и допы к ним за месяць</span>
+        <section class="section-about">
+            <span>blednyikaklanaya create this</span>
+            <img src="dead-zxcursed.gif">
+            <img class="blame" src="blame-manga.gif">
+            <button id="CLEARBUTON">DONT PUSH (CLEAR ALL PROGRESS)</button>
+        </section>
 
-            <div class="cards">
-            </div>
-        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="mainWorker.js"></script>
 
-    </section>
+    </body>
 
-    <section class="section-chart">
-        <div class="container container-chart">
-            <canvas id="myChart" width="400" height="200"></canvas>
-        </div>
-    </section>
-
-    <section class="section-about">
-        <span>blednyikaklanaya create this</span>
-        <img src="dead-zxcursed.gif">
-        <img class="blame" src="blame-manga.gif">
-        <button id="CLEARBUTON">DONT PUSH (CLEAR ALL PROGRESS)</button>
-    </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="mainWorker.js"></script>
-
-</body>
-
-</html>
+    </html>

@@ -30,7 +30,6 @@ const builds = [
 ];
 
 const savedBuilds = localStorage.getItem('builds');
-
 if (savedBuilds) {
     builds.splice(0, builds.length, ...JSON.parse(savedBuilds));
 }
@@ -88,11 +87,11 @@ function saveBuildsToLocalStorage () {
 
 resum();
 resPayDay();
-
 // -----------
 
 // cards
 
+let menuElem = document.getElementsByClassName("container-menu")[0];;
 let divCards = document.getElementsByClassName("cards")[0];
 console.log(divCards);
 
@@ -148,7 +147,13 @@ builds.forEach((build, index) => {
         divCards.appendChild(textCard);
     }
 })
+
 // -----------
+
+// Month
+
+// ----------
+
 
 // CHART.js
 
@@ -234,12 +239,12 @@ resArrayForChart()
 
 
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('SW registered', reg))
-        .catch(err => console.error('SW registration failed', err));
-    });
-  }
+  navigator.serviceWorker.register('/sw.js');
+
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    window.location.reload();
+  });
+}
   
 
 let buttonClear = document.getElementById("CLEARBUTON");
