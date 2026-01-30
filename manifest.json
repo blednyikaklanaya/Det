@@ -1,5 +1,5 @@
 {
-    "name": "blednyi Worker",
+    "name": "Worker",
     "short_name": "blWorker",
     "start_url": ".",
     "display": "standalone",

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'worker-v01'; // ⬅️ МЕНЯЙ ПРИ КАЖДОМ РЕЛИЗЕ
+const CACHE_NAME = 'worker-v01b2';
 const STATIC_ASSETS = [
   '/style.css',
   '/mainWorker.js',

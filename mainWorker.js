@@ -5,11 +5,12 @@ const builds = [
     { name: "Base", points: 5, count: 0, title: "Базовий" },
     { name: "Hard", points: 7, count: 0, title: "Сложный" },
     { name: "MaxHard", points: 10, count: 0, title: "Максимальный" },
-    { name: "Fans", points: 1, count: 0, title: "Кулеры" },
-    { name: "DubleTower", points: 4, count: 0, title: "Двойная башня" },
+    { name: "Fans", points: 1, count: 0, title: "Кулер (от 2)" },
+    { name: "DubleTower", points: 1, count: 0, title: "Двойная башня" },
     { name: "Liquid1", points: 2, count: 0, title: "Водянка 1 секция" },
-    { name: "Liquid2", points: 3, count: 0, title: "2 секции" },
-    { name: "Liquid3", points: 4, count: 0, title: "3 секции" },
+    { name: "Liquid2", points: 3, count: 0, title: "- 2 секции" },
+    { name: "Liquid3", points: 4, count: 0, title: "- 3 секции" },
+    { name: "Liquid3420", points: 5, count: 0, title: "- 3 секции 420" },
     { name: "Controller", points: 1, count: 0, title: "Контроллер" },
     { name: "Adapter", points: 1, count: 0, title: "Переходник" },
     { name: "Switcher5V", points: 1, count: 0, title: "Разветлитель 5В" },
@@ -29,10 +30,21 @@ const builds = [
     { name: "NoteBookWindows", points: 3, count: 0, title: "Ноутбук с виндой" },
 ];
 
-const savedBuilds = localStorage.getItem('builds');
-if (savedBuilds) {
-    builds.splice(0, builds.length, ...JSON.parse(savedBuilds));
+// create month construct?&
+
+let currentMonth = Number(localStorage.getItem('currentMonth')) || 1;
+if (!localStorage.getItem(`builds${currentMonth}`)) {
+    for (let i = 1; i <= 12; i++) {
+        localStorage.setItem(
+          `builds${i}`,
+          JSON.stringify(builds.map(b => ({ ...b })))
+        );
+    }
+    localStorage.setItem('currentMonth', '1');
 }
+
+
+// 
 
 let allHardLabel = document.getElementById("statHard");
 let allHard = 0;
@@ -82,7 +94,7 @@ function resPayDay () {
 }
 
 function saveBuildsToLocalStorage () {
-    localStorage.setItem('builds', JSON.stringify(builds));
+    saveCurrentMonth();
 }
 
 resum();
@@ -95,62 +107,121 @@ let menuElem = document.getElementsByClassName("container-menu")[0];;
 let divCards = document.getElementsByClassName("cards")[0];
 console.log(divCards);
 
-builds.forEach((build, index) => {
-    const card = document.createElement("div");
-    card.classList.add(build.name);
-    card.innerHTML = `
-        <span>${build.title}</span>
-        <input id="${build.name}" class="count${build.name} countCard" value="${build.count}">
-        <span class="point">point > ${build.points}<span/>
-        <button class="incCount${build.name}">+</button>
-        <button class="decCount${build.name}">-</button>
-    `;
+function reloadCards() {
+    divCards.innerHTML = '';
 
-    const inputChangeCount = card.querySelector(`.count${build.name}`);
-    inputChangeCount.addEventListener("change", e => {
-        builds[index].count = Number(e.target.value);
-        resum();
-        resPayDay();
-        saveBuildsToLocalStorage();
-        resArrayForChart();
+    builds.forEach((build, index) => {
+        const card = document.createElement("div");
+        card.classList.add(build.name);
+
+        card.innerHTML = `
+            <span>${build.title}</span>
+            <input id="${build.name}" class="count${build.name} countCard" value="${build.count}">
+            <span class="point"> ${build.points} points<span/>
+            <button class="incCount${build.name}">+</button>
+            <button class="decCount${build.name}">-</button>
+        `;
+
+        const tabsBuilds = ["Liquid2", "Liquid3", "Liquid3420"];
+
+        if (tabsBuilds.includes(build.name)) {
+        card.style.backgroundColor = "rgb(21, 21, 21)";
+        }
+
+
+        const inputChangeCount = card.querySelector(`.count${build.name}`);
+        inputChangeCount.addEventListener("change", e => {
+            builds[index].count = Number(e.target.value);
+            resum();
+            resPayDay();
+            saveBuildsToLocalStorage();
+            resArrayForChart();
+        });
+
+        const plusBtn = card.querySelector(`.incCount${build.name}`);
+        const minusBtn = card.querySelector(`.decCount${build.name}`);
+
+        plusBtn.addEventListener("click", () => {
+            builds[index].count += 1;
+            inputChangeCount.value = builds[index].count;
+            resum();
+            resPayDay();
+            saveBuildsToLocalStorage();
+            resArrayForChart();
+        });
+
+        minusBtn.addEventListener("click", () => {
+            builds[index].count -= 1;
+            inputChangeCount.value = builds[index].count;
+            resum();
+            resPayDay();
+            saveBuildsToLocalStorage();
+            resArrayForChart();
+        });
+
+        divCards.appendChild(card);
+
+        if (build.name === "MaxHard") {
+            const textCard = document.createElement("div");
+            textCard.innerHTML = `
+                <span class="textCard">Дополнительные действие с сборкой<span/>
+            `;
+            textCard.style.backgroundColor = "rgb(17, 17, 17)"
+            divCards.appendChild(textCard);
+        }
     });
-
-    const plusBtn = card.querySelector(`.incCount${build.name}`);
-    const minusBtn = card.querySelector(`.decCount${build.name}`);
-
-    plusBtn.addEventListener("click", () => {
-        builds[index].count += 1;
-        card.querySelector(`.count${build.name}`).value = builds[index].count;
-        resum();
-        resPayDay();
-        saveBuildsToLocalStorage();
-        resArrayForChart();
-    })
-
-    minusBtn.addEventListener("click", () => {
-        builds[index].count -= 1;
-        card.querySelector(`.count${build.name}`).value = builds[index].count;
-        resum();
-        resPayDay();
-        saveBuildsToLocalStorage();
-        resArrayForChart();
-    })
-
-    divCards.appendChild(card);
-
-    const textCard = document.createElement("div");
-    textCard.innerHTML = `
-        <span class="textCard" >Дополнительные действие с сборкой<span/>
-    `
-
-    if (build.name === "MaxHard") {
-        divCards.appendChild(textCard);
-    }
-})
+}
 
 // -----------
 
 // Month
+
+let monthButtonPrevious = document.getElementById("monthPreviousButton");
+let monthButtonNext = document.getElementById("monthNextButton");
+let spanMonthCounter = document.getElementById("monthNumber");
+
+spanMonthCounter.textContent = currentMonth;
+
+function loadMonth(month) {
+    const data = JSON.parse(localStorage.getItem(`builds${month}`)) || [];
+
+    builds.splice(0, builds.length, ...data);
+
+    reloadCards();        // ⬅️ важно
+    resum();
+    resPayDay();
+    resArrayForChart();
+
+    spanMonthCounter.textContent = month;
+}
+
+function saveCurrentMonth() {
+    localStorage.setItem(`builds${currentMonth}`, JSON.stringify(builds));
+    localStorage.setItem('currentMonth', currentMonth);
+}
+
+monthButtonNext.addEventListener('click', () => {
+    // 1. сохраняем текущий месяц
+    localStorage.setItem(`builds${currentMonth}`, JSON.stringify(builds));
+
+    // 2. переключаем месяц
+    currentMonth = currentMonth === 12 ? 1 : currentMonth + 1;
+    localStorage.setItem('currentMonth', currentMonth);
+
+    // 3. загружаем новый
+    loadMonth(currentMonth);
+});
+
+monthButtonPrevious.addEventListener('click', () => {
+    localStorage.setItem(`builds${currentMonth}`, JSON.stringify(builds));
+
+    currentMonth = currentMonth === 1 ? 12 : currentMonth - 1;
+    localStorage.setItem('currentMonth', currentMonth);
+
+    loadMonth(currentMonth);
+});
+
+
 
 // ----------
 
@@ -264,3 +335,12 @@ function clearProgressAndUpdate () {
 buttonClear.addEventListener("click", ( ) => {
     clearProgressAndUpdate();
 })
+
+loadMonth(currentMonth);
+
+// licens
+let buttonLicens = document.getElementsByClassName(".licens")[0];
+buttonLicens.addEventListener("click", () => {
+
+})
+// 
